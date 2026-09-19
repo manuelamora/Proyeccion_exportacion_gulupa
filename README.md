@@ -4,37 +4,31 @@
 
 ## 1. Caso de negocio
 
-### 1.1 Descripción del problema
+### 1.1 Contexto
 
-El proyecto analiza información de exportaciones de gulupa correspondiente al período **2021-2025**, implementando una arquitectura de datos **Medallion (Bronze, Silver y Gold)** en Databricks.
+La gulupa es una de las frutas exóticas con mayor potencial de exportación en Colombia debido a la creciente demanda en mercados europeos como Alemania, Países Bajos y Francia. Sin embargo, los exportadores enfrentan desafíos relacionados con:
 
-El problema de negocio se aborda desde tres necesidades principales:
+Variabilidad climática.
+Pérdidas por calidad del producto.
+Fluctuación de precios internacionales.
+Costos logísticos elevados.
+Incumplimiento de requisitos fitosanitarios.
 
-- Consolidar información histórica de exportaciones proveniente de archivos CSV con diferencias de formato entre períodos.
-- Estandarizar y depurar los datos para obtener información confiable para análisis.
-- Generar información analítica que permita estudiar el comportamiento de las exportaciones, proyectar valores futuros y analizar mercados internacionales.
-
-Un problema específico identificado en los datos es la representación diferente del código arancelario de la gulupa: `0810901030` y `810901030`, debido al cero inicial.
+Ante esta situación, una empresa exportadora decide implementar una estrategia de Big Data para recopilar y analizar información proveniente de diferentes fuentes con el fin de optimizar toda la cadena de exportación.
 
 ### 1.2 Objetivo general
 
-Construir un pipeline de Big Data en Databricks que permita ingerir, limpiar, transformar y analizar los datos históricos de exportaciones de gulupa, generando tablas analíticas para apoyar el análisis de mercados y la proyección de exportaciones.
+Incrementar la rentabilidad de la exportación de gulupa mediante el uso de tecnologías Big Data para apoyar la toma de decisiones estratégicas.
 
 ### 1.3 Objetivos específicos
 
-1. Ingerir los archivos históricos de exportaciones de 2021 a 2025.
-2. Estandarizar formatos y tipos de datos.
-3. Implementar las capas Bronze, Silver y Gold.
-4. Analizar la inconsistencia del código POSAR de gulupa con y sin cero inicial.
-5. Construir agregaciones por departamento, país y período mensual.
-6. Generar un modelo de pronóstico de exportaciones.
-7. Calcular crecimiento histórico por mercado mediante CAGR.
-8. Preparar tablas Gold para una futura visualización o dashboard.
+Predecir la demanda internacional.
+Identificar mercados potenciales.
+Mejorar la planificación de la producción.
 
 ### 1.4 Indicadores obtenidos
 
 | Indicador | Resultado |
-|---|---:|
 | Período histórico | 2021-2025 |
 | Registros ingeridos en Bronze | 2.428.910 |
 | Registros después de limpieza en Silver | 2.340.149 |
@@ -47,48 +41,9 @@ Construir un pipeline de Big Data en Databricks que permita ingerir, limpiar, tr
 
 > Los valores anteriores corresponden a las salidas ejecutadas en el notebook de Databricks.
 
----
-
 # 2. Relación beneficio / costo
 
-## 2.1 Beneficios esperados
-
-La solución genera beneficios principalmente en términos de calidad, automatización y capacidad analítica:
-
-- **Centralización:** los archivos históricos se consolidan en una estructura común.
-- **Calidad de datos:** se corrigen formatos numéricos, fechas y códigos.
-- **Trazabilidad:** se conserva información de origen y fecha de ingesta.
-- **Escalabilidad:** Spark permite procesar millones de registros.
-- **Reutilización:** las tablas Gold pueden alimentar visualizaciones y análisis posteriores.
-- **Análisis predictivo:** se incorpora un modelo para proyectar el valor FOB.
-- **Análisis de mercados:** se calcula crecimiento por país para detectar mercados con variaciones importantes.
-
-## 2.2 Costos considerados
-
-El notebook suministrado **no contiene información monetaria sobre costos de infraestructura, licenciamiento, horas de desarrollo, almacenamiento o consumo de Databricks**. Por esta razón, no es correcto inventar un ROI numérico.
-
-Para completar esta sección en la presentación final, se recomienda registrar:
-
-| Componente | Dato requerido |
-|---|---|
-| Infraestructura/Databricks | Costo mensual |
-| Almacenamiento | Costo mensual |
-| Desarrollo | Horas × costo/hora |
-| Mantenimiento | Horas mensuales × costo/hora |
-| Visualización | Licencia/costo mensual |
-| Beneficio económico estimado | Ahorro o incremento de ingresos |
-
-### Fórmula propuesta
-
-**Beneficio neto = Beneficios económicos − Costos del proyecto**
-
-**ROI = (Beneficio neto / Costo total) × 100**
-
-### Conclusión de esta sección
-
-Con la información disponible en el notebook se puede demostrar el **beneficio técnico y analítico**, pero no calcular un retorno financiero real. Para presentar un ROI monetario se requiere incorporar los costos y beneficios económicos del negocio.
-
----
+La implementación de una estrategia de Big Data en la exportación de gulupa permite transformar grandes volúmenes de información en conocimiento útil para la toma de decisiones. A través del análisis predictivo, la integración de datos agrícolas, logísticos y comerciales, la empresa puede anticipar la demanda, reducir pérdidas y optimizar la operación exportadora.
 
 # 3. Arquitectura propuesta
 
@@ -545,4 +500,12 @@ gulupa-big-data/
 | 4. Pipeline de ingesta | Ingesta, limpieza, normalización, calidad y tablas Gold | ✅ |
 | 5. Modelos de ciencia de datos | Regresión lineal + estacionalidad y CAGR | ✅ |
 | 6. App/visualización | Tablas preparadas para dashboard; dashboard no evidenciado en notebook | ⚠️ |
+
+Referencias
+Fuente principal 
+DANE-DIAN, estadísticas de exportaciones 
+[Colombia - Estadísticas de Exportaciones - EXPO - 2011 A 2024]
+
+
+
 
